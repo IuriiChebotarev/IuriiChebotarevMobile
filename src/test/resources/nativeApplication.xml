@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Test Suite for Native Mobile Tests" verbose="1">
+
+    <parameter name="testType" value="NATIVE_TEST_PROPERTIES"/>
+
+    <test name="Contact Manager Test">
+
+        <groups>
+            <run>
+                <include name="native application"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="scenarios.nativeApplication"/>
+        </packages>
+
+    </test>
+
+</suite>

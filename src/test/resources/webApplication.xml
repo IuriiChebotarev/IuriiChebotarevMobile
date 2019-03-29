@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Test Suite for Web Mobile Tests" verbose="1">
+
+    <parameter name="testType" value="WEB_TEST_PROPERTIES"/>
+
+    <test name="iana.org Test">
+
+        <groups>
+            <run>
+                <include name="web"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="scenarios.webApplication"/>
+        </packages>
+
+    </test>
+
+</suite>
