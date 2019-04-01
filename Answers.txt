@@ -1,0 +1,6 @@
+1.Test passed.
+3.Test failed. Need to install application to device because Appium tests and Mobile Cloud are distributed, 
+Desired Capability "app" is ignored at this moment. Appium session for native and hybrid apps should be started with 
+Desired Capability for pre-installed app.
+4.Does not work."appPackage" and "appActivity" are mandatory for mobilecloud
+5.I think we should have separate projects for our iOS web tests and Andriod native 

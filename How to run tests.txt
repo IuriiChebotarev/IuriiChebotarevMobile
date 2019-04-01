@@ -1,0 +1,9 @@
+Native test:
+    1.login http://mobilecloud.epam.com/.
+    2.Start mobile phone using idiu from native.properties.
+    3.Install ContactManager.apk.
+    4.Run test via nativeApplication.xml.
+    
+Web test:
+    1.Run test via webApplication.xml.
+    

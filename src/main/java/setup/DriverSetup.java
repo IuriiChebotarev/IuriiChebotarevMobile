@@ -26,6 +26,9 @@ public class DriverSetup extends TestProperties {
     protected String SUT; // site under testing
     protected String TEST_PLATFORM;
     protected String DRIVER;
+    protected String UDID;
+    protected String APP_PACKAGE;
+    protected String APP_ACTIVITY;
 
     // Constructor for driver
     protected DriverSetup() throws IOException {
@@ -46,31 +49,38 @@ public class DriverSetup extends TestProperties {
             SUT = t_sut == null ? null : "http://" + t_sut;
             TEST_PLATFORM = getProp(WEB_TEST_PROPERTIES, "platform");
             DRIVER = getProp(WEB_TEST_PROPERTIES, "driver");
+            UDID = getProp(WEB_TEST_PROPERTIES, "udid");
         } else {
             AUT = getProp(NATIVE_TEST_PROPERTIES, "aut");
             TEST_PLATFORM = getProp(NATIVE_TEST_PROPERTIES, "platform");
             DRIVER = getProp(NATIVE_TEST_PROPERTIES, "driver");
+            UDID = getProp(NATIVE_TEST_PROPERTIES, "udid");
+            APP_PACKAGE = getProp(NATIVE_TEST_PROPERTIES, "appPackage");
+            APP_ACTIVITY = getProp(NATIVE_TEST_PROPERTIES, "appActivity");
         }
 
         // Setup test platform: Android or iOS. Browser also depends on a platform.
         switch (TEST_PLATFORM) {
             case "Android":
-                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554"); // default Android emulator
                 browserName = "Chrome";
                 break;
             case "iOS":
                 browserName = "Safari";
+                capabilities.setCapability(MobileCapabilityType.UDID, UDID);
                 break;
             default:
                 throw new Exception("Unknown mobile platform");
         }
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, TEST_PLATFORM);
+        capabilities.setCapability(MobileCapabilityType.UDID, UDID);
 
         // Setup type of application: mobile, web (or hybrid)
         if(AUT != null && SUT == null){
             // Native
             File app = new File(AUT);
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+            capabilities.setCapability("appPackage", APP_PACKAGE);
+            capabilities.setCapability("appActivity", APP_ACTIVITY);
         } else if(SUT != null && AUT == null){
             // Web
             capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, browserName);

@@ -8,7 +8,7 @@
 
         <groups>
             <run>
-                <include name="web"/>
+                <include name="web application"/>
             </run>
         </groups>
 
