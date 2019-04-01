@@ -9,7 +9,7 @@ import setup.PropertyFiles;
 
 import java.io.IOException;
 
-@Test(groups = {"native", "web"})
+@Test(groups = {"native application", "web application"})
 public class Hooks extends DriverSetup {
 
     /**
